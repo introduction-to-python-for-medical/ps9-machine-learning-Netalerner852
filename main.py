@@ -3,7 +3,7 @@ df = pd.read_csv('parkinsons.csv')
 df = df.dropna()
 
 features = ['PPE', 'DFA']
-target = ['status']
+target = 'status'
 x = df[features]
 y = df[target]  
 
