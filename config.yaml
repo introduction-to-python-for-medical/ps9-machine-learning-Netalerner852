@@ -1,2 +1,2 @@
-path:"my_model (1).joblib"
+path:"nl_modle.joblib"
 features = ['PPE', 'DFA']
