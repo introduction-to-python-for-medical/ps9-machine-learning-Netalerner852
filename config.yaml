@@ -1,2 +1,2 @@
-path:"nl_modle.joblib"
+path:"nl_new_modle.joblib"
 features = ['PPE', 'DFA']
