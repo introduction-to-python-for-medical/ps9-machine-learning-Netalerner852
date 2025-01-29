@@ -1,25 +1,27 @@
 import pandas as pd
 df = pd.read_csv('parkinsons.csv')
-df = df.dropna()
 
-features = ['PPE', 'DFA']
+import seaborn as sns
+sns.pairplot(df, hue='status')
+
+features = ['PPE', 'HNR']
 target = 'status'
-x = df[features]
-y = df[target]  
+X = df[features] 
+y = df['status'] 
 
 from sklearn.preprocessing import MinMaxScaler
 scaler = MinMaxScaler()
-x_scaled = scaler.fit_transform(x)
+X_scaled = scaler.fit_transform(X)
 
 from sklearn.model_selection import train_test_split
-x_train, x_test, y_train, y_test = train_test_split(x_scaled, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
 
-from sklearn.svm import SVC
-model = SVC()
-model.fit(x_train, y_train)
+from sklearn.tree import DecisionTreeClassifier
+dt = DecisionTreeClassifier(max_depth=3)
+dt.fit(X_train, y_train)
+
+y_pred = dt.predict(X_test)
 
 from sklearn.metrics import accuracy_score
-y_pred = model.predict(x_test)
 accuracy = accuracy_score(y_test, y_pred)
-print (accuracy)
-
+print(accuracy)
