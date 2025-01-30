@@ -1,3 +1,2 @@
-import pandas as pd
-df = pd.read_csv('parkinsons.csv')
-
+features: ["PPE" , "RPDE"]
+path: "parkinsons_model.joblib"
